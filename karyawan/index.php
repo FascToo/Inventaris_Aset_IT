@@ -4,7 +4,7 @@
     if (session_status() == PHP_SESSION_NONE) {
         session_start();
     }
-    if (!isset($_SESSION['log']) || $_SESSION['role'] != 'Admin') {
+    if (!isset($_SESSION['log']) || $_SESSION['role'] != 'Karyawan') {
         header('Location: ../index.php');
         exit;
     }
@@ -133,35 +133,6 @@
                                 <a class="collapse-item" href="databarang.php">Data Stok</a>
                                 <a class="collapse-item" href="masuk.php">Stock Masuk</a>
                                 <a class="collapse-item" href="keluar.php">Stock Keluar</a>
-                            </div>
-                        </div>
-                    </li>
-
-                    <!-- Nav Item - Report -->
-                    <li class="nav-item">
-                        <a class="nav-link" href="report.php">
-                            <i class="fas fa-fw fa-folder"></i>
-                            <span>Laporan</span></a>
-                    </li>
-
-                    <!-- Nav Item - Data Master -->
-                    <li class="nav-item">
-                        <a class="nav-link" href="report.php">
-                            <i class="fas fa-fw fa-folder"></i>
-                            <span>Data Master</span></a>
-                    </li>
-
-                    <!-- Nav Item - Management User -->
-                    <li class="nav-item">
-                        <a class="nav-link" href="#" data-toggle="collapse" data-target="#collapsePages"
-                            aria-expanded="true" aria-controls="collapsePages">
-                            <i class="fas fa-fw fa-folder"></i>
-                            <span>Management User</span>
-                        </a>
-                        <div id="collapsePages" class="collapse" aria-labelledby="headingPages"
-                            data-parent="#accordionSidebar">
-                            <div class="bg-white py-2 collapse-inner rounded">
-                                <a class="collapse-item" href="user.php">Tambah User</a>
                             </div>
                         </div>
                     </li>

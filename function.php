@@ -3,6 +3,11 @@ session_start();
 // membuat koneksi ke database
 $conn = mysqli_connect("localhost","root","","stockbarang");
 
+if (!$conn) {
+    die("Koneksi database gagal: " . mysqli_connect_error());
+}
+
+
 // menambah barang baru
 if(isset($_POST['addnewbarang'])) {
     $namabarang = $_POST['namabarang'];
