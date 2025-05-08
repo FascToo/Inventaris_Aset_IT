@@ -46,7 +46,6 @@ if($addtomasuk&&$updatestockmasuk) {
 // menambah barang keluar
 if(isset($_POST['addbarangkeluar'])) {
 $barangnya = $_POST['barangnya'];
-$penerima = $_POST['penerima'];
 $qty = $_POST['qty'];
 
 $cekstocksekarang = mysqli_query($conn, "select * from stock where idbarang='$barangnya'");
@@ -58,7 +57,7 @@ if($stocksekarang >= $qty) {
     // kalau stock barangnya cukup
     $tambahkanstocksekarangdenganquantity = $stocksekarang-$qty;
 
-    $addtokeluar = mysqli_query($conn, "insert into keluar (idbarang, penerima, qty) values('$barangnya', '$penerima', '$qty')");
+    $addtokeluar = mysqli_query($conn, "insert into keluar (idbarang, qty) values('$barangnya', '$qty')");
     $updatestockmasuk = mysqli_query($conn,"update stock set stock='$tambahkanstocksekarangdenganquantity' where idbarang='$barangnya'");
     if($addtokeluar&&$updatestockmasuk) {
         header('Location:keluar.php');
@@ -172,7 +171,6 @@ if(isset($_POST['hapusbarangmasuk'])){
 if(isset($_POST['updatebarangkeluar'])) {
     $idb = $_POST['idb'];
     $idk = $_POST['idk'];
-    $penerima = $_POST['penerima'];
     $qty = $_POST['qty'];
 
     $lihatstock = mysqli_query($conn,"select * from stock where idbarang='$idb'");
@@ -187,7 +185,7 @@ if(isset($_POST['updatebarangkeluar'])) {
         $selisih = $qty-$qtyskrg;
         $kurangin = $stockskrg - $selisih;
         $kurangistocknya = mysqli_query($conn,"update stock set stock='$kurangin' where idbarang='$idb'");
-        $updatenya = mysqli_query($conn,"update keluar set qty='$qty', penerima='$penerima' where idkeluar='$idk'");
+        $updatenya = mysqli_query($conn,"update keluar set qty='$qty' where idkeluar='$idk'");
             if($kurangistocknya&&$updatenya){
                 header('Location:keluar.php');
                 } else {
@@ -278,5 +276,58 @@ if(isset($_POST["hapusadmin"])){
     }
 }
 
+// Query untuk menghitung total stok
+$query = "
+    SELECT s.idbarang, s.namabarang, 
+    (s.stock + COALESCE(SUM(m.qty), 0) - COALESCE(SUM(k.qty), 0)) AS total_stok
+    FROM stock s
+    LEFT JOIN masuk m ON s.idbarang = m.idbarang
+    LEFT JOIN keluar k ON s.idbarang = k.idbarang
+    GROUP BY s.idbarang, s.namabarang, s.stock
+";
+
+$result = mysqli_query($conn, $query);
+
+if (!$result) {
+    die("Query failed: " . mysqli_error($conn));
+}
+
+// Ambil data
+$stok_barang = [];
+while ($row = mysqli_fetch_assoc($result)) {
+    $stok_barang[] = $row;
+}
+
+// Query untuk menghitung total barang masuk
+$query_masuk = "
+    SELECT SUM(qty) AS total_masuk 
+    FROM masuk
+";
+
+$result_masuk = mysqli_query($conn, $query_masuk);
+
+if (!$result_masuk) {
+    die("Query failed: " . mysqli_error($conn));
+}
+
+// Ambil data
+$row_masuk = mysqli_fetch_assoc($result_masuk);
+$total_barang_masuk = $row_masuk['total_masuk'] ?? 0;
+
+// Query untuk menghitung total barang keluar
+$query_keluar = "
+    SELECT SUM(qty) AS total_keluar 
+    FROM keluar
+";
+
+$result_keluar = mysqli_query($conn, $query_keluar);
+
+if (!$result_keluar) {
+    die("Query failed: " . mysqli_error($conn));
+}
+
+// Ambil data
+$row_keluar = mysqli_fetch_assoc($result_keluar);
+$total_barang_keluar = $row_keluar['total_keluar'] ?? 0;
 
 ?>

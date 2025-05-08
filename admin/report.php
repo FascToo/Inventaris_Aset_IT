@@ -1,6 +1,6 @@
 <?php
-require 'function.php';
-require 'cek.php';
+require '../function.php';
+require '../cek.php';
 ?>
 <html>
 

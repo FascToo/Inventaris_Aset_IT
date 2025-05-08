@@ -1,33 +1,32 @@
 
-MENU APLIKASI INVENTORY + "POS *kalau kuat ygy"
-
+MENU APLIKASI INVENTORIS ASET IT
 1. Dashboard
-2. Barang
-    2.1 Data Barang
-    2.2 Tambah Barang
-3. Supplier 
-    3.1 Data Supplier
-    3.2 Tambah Supplier
+2. Aset IT
+    2.1 Data Aset
+    2.2 Tambah Aset
+3. Permintaan
+    3.1 Data
+    3.2 Tambah Permintaan
+    3.3 Tambah Peminjaman
+
+4. Pengaduan
+    4.1 Pengaduan
+    4.2 Data Pengaduan
+    4.3 Status Pengaduan
+    4.4 Data Maintenance
 4. Stock
     4.1 Stock Barang 
     4.2 Stock Masuk
     4.3 Stock Keluar
-5. Report / Laporan
+5. Data Master
+5. Report / Laporan : data aset, data peminjaman, data pengaduan 
 6. Kelola User
 
 Note: Jika waktunya cukup bisa coba menambahkan 
 1. Menu Import Data 
 2. Menu untuk Backup Data 
-3. Menu POS (Point Of Sales) / Menu Penjualan 
-4. Menu retur
-5. Kode barang nyesuain dengan barang yg satu dengan yg lainnya
-    Contoh :
-        Kode barang  |    Barang
-    ---------------------------------
-    211001           |- Baju    
-    212001           |- Celana
-    ---------------------------------
-    21 : Tahun input data nya
-    10 : kode untuk baju
-    20 : Kode untuk celana
-    01 : no urut daftar barangnya
+
+Level User
+Admin - 1 : semua hak akses
+Atasan Divisi - 2 : Permintaan, dan laporan
+Karyawan - 3 : Pengajuan Permintaan, Pengaduan
