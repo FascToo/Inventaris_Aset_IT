@@ -29,7 +29,7 @@ if (isset($_POST['login'])) {
         }
     } else {
         // Login gagal
-        header('Location: login.php');
+        header('Location: index.php');
     }
 }
 
@@ -64,7 +64,7 @@ if (isset($_SESSION['log'])) {
     <!-- Style -->
     <link rel="stylesheet" href="css/style.css">
 
-    <title>Login Inventory Parison</title>
+    <title>Login Inventaris IT</title>
 </head>
 
 <body>

@@ -181,16 +181,7 @@ require '../cek.php';
                 <div id="content">
 
                     <!-- Topbar -->
-                    <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
-
-                        <!-- Sidebar Toggle (Topbar) -->
-                        <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
-                            <i class="fa fa-bars"></i>
-                        </button>
-
-                        <!-- Topbar Navbar -->
-                        
-                    </nav>
+                    <?php include 'header.php'; ?>
                     <!-- End of Topbar -->
 
                     <!-- Begin Page Content -->
@@ -265,13 +256,7 @@ require '../cek.php';
                 <!-- End of Main Content -->
 
                 <!-- Footer -->
-                <footer class="sticky-footer bg-white">
-                    <div class="container my-auto">
-                        <div class="copyright text-center my-auto">
-                            <span>Copyright &copy; Your Website 2020</span>
-                        </div>
-                    </div>
-                </footer>
+                <?php include 'footer.php'; ?>
                 <!-- End of Footer -->
 
             </div>
