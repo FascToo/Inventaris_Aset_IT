@@ -35,100 +35,7 @@ require '../cek.php';
         <div id="wrapper">
 
             <!-- Sidebar -->
-            <ul class="navbar-nav bg-gradient-dark sidebar sidebar-dark accordion" id="accordionSidebar">
-
-                <!-- Sidebar - Brand -->
-                <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.php">
-                    <div class="sidebar-brand-icon rotate-n-15">
-                        <i class=""></i>
-                    </div>
-                    <div class="sidebar-brand-text mx-3">Inventory System</div>
-                </a>
-
-                <!-- Divider -->
-                <hr class="sidebar-divider my-0">
-
-                <!-- Nav Item - Dashboard -->
-                <li class="nav-item">
-                    <a class="nav-link" href="index.php">
-                        <i class="fas fa-fw fa-tachometer-alt"></i>
-                        <span>Dashboard</span></a>
-                </li>
-
-                <!-- Divider -->
-                <hr class="sidebar-divider">
-
-                <!-- Heading -->
-
-                <!-- Nav Item - Pages Product Menu -->
-                <li class="nav-item">
-                    <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
-                        aria-expanded="true" aria-controls="collapseTwo">
-                        <i class="fas fa-fw fa-cog"></i>
-                        <span>Barang</span>
-                    </a>
-                    <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-                        <div class="bg-white py-2 collapse-inner rounded">
-                            <a class="collapse-item" href="databarang.php">Data Barang</a>
-                            <a class="collapse-item" href="tambahbarang.php">Tambah Barang</a>
-                        </div>
-                    </div>
-                </li>
-
-                <!-- Nav Item - Utilities Collapse Menu -->
-                <li class="nav-item">
-                    <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities"
-                        aria-expanded="true" aria-controls="collapseUtilities">
-                        <i class="fas fa-fw fa-wrench"></i>
-                        <span>Stock</span>
-                    </a>
-                    <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities"
-                        data-parent="#accordionSidebar">
-                        <div class="bg-white py-2 collapse-inner rounded">
-                            <a class="collapse-item" href="masuk.php">Stock Masuk</a>
-                            <a class="collapse-item" href="keluar.php">Stock Keluar</a>
-                        </div>
-                    </div>
-                </li>
-
-                <!-- Nav Item - Report -->
-                <li class="nav-item">
-                    <a class="nav-link" href="report.php">
-                        <i class="fas fa-fw fa-tachometer-alt"></i>
-                        <span>Laporan</span></a>
-                </li>
-
-                <!-- Nav Item - Management User -->
-                <li class="nav-item active">
-                    <a class="nav-link" href="#" data-toggle="collapse" data-target="#collapsePages"
-                        aria-expanded="true" aria-controls="collapsePages">
-                        <i class="fas fa-fw fa-wrench"></i>
-                        <span>Management User</span>
-                    </a>
-                    <div id="collapsePages" class="collapse show" aria-labelledby="headingPages"
-                        data-parent="#accordionSidebar">
-                        <div class="bg-white py-2 collapse-inner rounded">
-                            <a class="collapse-item active" href="user.php">Tambah User</a>
-                    </div>
-                </li>
-
-                <!-- Divider -->
-                <hr class="sidebar-divider my-0">
-                <!-- Nav Item - Report -->
-                <li class="nav-item">
-                    <a class="nav-link" href="logout.php" data-toggle="modal" data-target="#logoutModal">
-                        <i class="fas fa-fw fa-sign-out-alt"></i>
-                        <span>Logout</span></a>
-                </li>
-                <!-- Divider -->
-                <hr class="sidebar-divider d-none d-md-block">
-
-                <!-- Sidebar Toggler (Sidebar) -->
-                <div class="text-center d-none d-md-inline">
-                    <button class="rounded-circle border-0" id="sidebarToggle"></button>
-                </div>
-
-            </ul>
+            <?php include 'sidebar.php'; ?>
             <!-- End of Sidebar -->
 
             <!-- Content Wrapper -->
@@ -287,13 +194,7 @@ require '../cek.php';
                 <!-- End of Main Content -->
 
                 <!-- Footer -->
-                <footer class="sticky-footer bg-white">
-                    <div class="container my-auto">
-                        <div class="copyright text-center my-auto">
-                            <span>Copyright &copy; Your Website 2020</span>
-                        </div>
-                    </div>
-                </footer>
+                <?php include 'footer.php'; ?>
                 <!-- End of Footer -->
 
             </div>

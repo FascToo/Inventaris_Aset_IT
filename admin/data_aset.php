@@ -13,7 +13,7 @@ require '../cek.php';
         <meta name="description" content="">
         <meta name="author" content="">
 
-        <title>Data Barang</title>
+        <title>Data Aset IT</title>
 
         <!-- Custom fonts for this template-->
         <link href="../vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -28,10 +28,10 @@ require '../cek.php';
         <link href="../vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
 
         <style>
-        a {
-            text-decoration: none;
-            color: grey;
-        }
+            a {
+                text-decoration: none;
+                color: grey;
+            }
         </style>
 
     </head>
@@ -59,22 +59,22 @@ require '../cek.php';
                     <div class="container-fluid">
 
                         <!-- Page Heading -->
-                        <h1 class="h3 mb-2 text-gray-800">Data Barang</h1>
+                        <h1 class="h3 mb-2 text-gray-800">Data Aset IT</h1>
 
                         <!-- DataTales Example -->
                         <div class="card mb-4">
                             <div class="card-body">
-                                <?php 
+                                <?php
                                 $ambildatastock = mysqli_query($conn, "select *from stock where stock < 1");
 
-                                while($fetch=mysqli_fetch_array($ambildatastock)){
+                                while ($fetch = mysqli_fetch_array($ambildatastock)) {
                                     $barang = $fetch['namabarang'];
-                            ?>
-                                <div class="alert alert-danger alert-dismissible">
-                                    <button type="button" class="close" data-dismiss="alert">&times;</button>
-                                    <strong>Perhatian!</strong> Stok <?=$barang?> Telah Habis
-                                </div>
-                                <?php 
+                                    ?>
+                                    <div class="alert alert-danger alert-dismissible">
+                                        <button type="button" class="close" data-dismiss="alert">&times;</button>
+                                        <strong>Perhatian!</strong> Stok <?= $barang ?> Telah Habis
+                                    </div>
+                                    <?php
                                 }
                                 ?>
 
@@ -83,37 +83,39 @@ require '../cek.php';
                                         <thead>
                                             <tr>
                                                 <th>No</th>
-                                                <th>Description Item</th>
-                                                <th>Stock</th>
-                                                <th>Uom</th>
+                                                <th>Kode Barang</th>
+                                                <th>Nama Barang</th>
+                                                <th>Jenis Barang</th>
+                                                <th>Merk Barang</th>
+                                                <th>Kondisi</th>
                                             </tr>
                                         </thead>
                                         <tbody>
                                             <?php
-                                        $ambilsemuadatastock = mysqli_query($conn,"select * from stock");
-                                        $i = 1;
-                                        while($data=mysqli_fetch_array($ambilsemuadatastock)){
-                                            
-                                            $namabarang = $data['namabarang'];
-                                            $stock = $data['stock'];
-                                            $idb = $data['idbarang'];
-                                            $satuan = $data['satuan'];
-                                        
-                                        ?>
-
-                                            <tr>
-                                                <td><?=$i++;?></td>
-                                                <td><strong><a
-                                                            href="detail.php?id=<?=$idb;?>"><?=$namabarang;?></a></strong>
-                                                </td>
-                                                <td><?=$stock;?></td>
-                                                <td><?=$satuan;?></td>
-                                            </tr>
-
-                                            <?php
-                                        };
-                                        ?>
-
+                                            $ambilsemuadataaset = mysqli_query($conn, "select * from aset_it");
+                                            $i = 1;
+                                            while ($data = mysqli_fetch_array($ambilsemuadataaset)) {
+                                                $no = $data['nomor'];
+                                                $kode_aset = $data['kode_aset'];
+                                                $nama_aset = $data['nama_aset'];
+                                                $jenis_aset = $data['jenis_aset'];
+                                                $merk_aset = $data['merk_aset'];
+                                                $kondisi_aset = $data['kondisi_aset'];
+                                                ?>
+                                                <tr>
+                                                    <td><?= $i++; ?></td>
+                                                    <td><a
+                                                            href="detail.php?kode=<?= $kode_aset; ?>"><strong><?= $kode_aset; ?></strong></a>
+                                                    </td>
+                                                    <td><a href="detail.php?kode=<?= $kode_aset; ?>"><?= $nama_aset; ?></a></td>
+                                                    <td><?= $jenis_aset; ?></td>
+                                                    <td><?= $merk_aset; ?></td>
+                                                    <td><?= $kondisi_aset; ?></td>
+                                                </tr>
+                                                <?php
+                                            }
+                                            ;
+                                            ?>
                                         </tbody>
                                     </table>
                                 </div>
