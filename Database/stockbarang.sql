@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 17, 2024 at 02:16 PM
--- Server version: 10.4.28-MariaDB
--- PHP Version: 8.2.4
+-- Generation Time: May 09, 2025 at 10:34 AM
+-- Server version: 10.4.32-MariaDB
+-- PHP Version: 8.2.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -20,6 +20,29 @@ SET time_zone = "+00:00";
 --
 -- Database: `stockbarang`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `aset_it`
+--
+
+CREATE TABLE `aset_it` (
+  `nomor` int(255) NOT NULL,
+  `kode_aset` varchar(50) NOT NULL,
+  `foto_aset` varchar(100) NOT NULL,
+  `nama_aset` varchar(100) NOT NULL,
+  `jenis_aset` varchar(50) NOT NULL,
+  `merk_aset` varchar(50) NOT NULL,
+  `kondisi_aset` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `aset_it`
+--
+
+INSERT INTO `aset_it` (`nomor`, `kode_aset`, `foto_aset`, `nama_aset`, `jenis_aset`, `merk_aset`, `kondisi_aset`) VALUES
+(1, 'GCL/AP/LTP/9157', '', 'Laptop Dell', 'Laptop', 'Dell', 'Baik');
 
 -- --------------------------------------------------------
 
@@ -56,16 +79,18 @@ INSERT INTO `keluar` (`idkeluar`, `idbarang`, `tanggal`, `qty`) VALUES
 CREATE TABLE `login` (
   `iduser` int(11) NOT NULL,
   `email` varchar(50) NOT NULL,
-  `password` varchar(10) NOT NULL
+  `password` varchar(10) NOT NULL,
+  `role` enum('Admin','Manajer','Karyawan') NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `login`
 --
 
-INSERT INTO `login` (`iduser`, `email`, `password`) VALUES
-(1, 'admin@admin.com', '123'),
-(4, 'user@user.com', '123');
+INSERT INTO `login` (`iduser`, `email`, `password`, `role`) VALUES
+(1, 'admin@admin.com', '123', 'Admin'),
+(2, 'manajer@manajer.com', '123', 'Manajer'),
+(4, 'user@user.com', '123', 'Karyawan');
 
 -- --------------------------------------------------------
 
@@ -121,6 +146,13 @@ INSERT INTO `stock` (`idbarang`, `namabarang`, `deskripsi`, `stock`, `kode_baran
 --
 
 --
+-- Indexes for table `aset_it`
+--
+ALTER TABLE `aset_it`
+  ADD PRIMARY KEY (`nomor`),
+  ADD UNIQUE KEY `kode_aset_it` (`kode_aset`);
+
+--
 -- Indexes for table `keluar`
 --
 ALTER TABLE `keluar`
@@ -147,6 +179,12 @@ ALTER TABLE `stock`
 --
 -- AUTO_INCREMENT for dumped tables
 --
+
+--
+-- AUTO_INCREMENT for table `aset_it`
+--
+ALTER TABLE `aset_it`
+  MODIFY `nomor` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `keluar`
